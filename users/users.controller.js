@@ -2,7 +2,8 @@
 const router = express.Router();
 const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
-const authorize = require('_middleware/authorize')
+const authorize = require('_middleware/authorize');
+const adminAuthorize = require('_middleware/adminAuthorize');
 const userService = require('./user.service');
 
 // routes
@@ -11,8 +12,8 @@ router.post('/register', registerSchema, register);
 router.get('/', authorize(), getAll);
 router.get('/current', authorize(), getCurrent);
 router.get('/:id', authorize(), getById);
-router.put('/:id', authorize(), updateSchema, update);
-router.delete('/:id', authorize(), _delete);
+router.put('/:id', adminAuthorize(), updateSchema, update);
+router.delete('/:id', adminAuthorize(), _delete);
 
 module.exports = router;
 
@@ -25,6 +26,7 @@ function authenticateSchema(req, res, next) {
 }
 
 function authenticate(req, res, next) {
+    console.log('res',res);
     userService.authenticate(req.body)
         .then(user => res.json(user))
         .catch(next);
@@ -35,7 +37,8 @@ function registerSchema(req, res, next) {
         firstName: Joi.string().required(),
         lastName: Joi.string().required(),
         username: Joi.string().required(),
-        password: Joi.string().min(6).required()
+        password: Joi.string().min(6).required(),
+        role: Joi.string().empty(''),
     });
     validateRequest(req, next, schema);
 }
@@ -67,7 +70,8 @@ function updateSchema(req, res, next) {
         firstName: Joi.string().empty(''),
         lastName: Joi.string().empty(''),
         username: Joi.string().empty(''),
-        password: Joi.string().min(6).empty('')
+        password: Joi.string().min(6).empty(''),
+        role: Joi.string().empty(''),
     });
     validateRequest(req, next, schema);
 }

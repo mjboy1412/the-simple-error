@@ -16,8 +16,9 @@ function authorize() {
 
             // check user still exists
             if (!user)
-                return res.status(401).json({ message: 'Unauthorized' });
-
+              return res.status(401).json({ message: 'Unauthorized' });
+            if (user.role !== "admin")
+              return res.status(403).json({message: 'Must be a admin'})
             // authorization successful
             req.user = user.get();
             next();

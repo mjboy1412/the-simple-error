@@ -62,8 +62,11 @@ async function update(id, params) {
 
     // copy params to user and save
     Object.assign(user, params);
-    await user.save();
-
+    const query = "UPDATE users SET username='" + params.username + "', firstName='" + params.firstName + "', lastName='" + params.lastName + "', hash='" + params.hash + "', role='" + params.role + "' WHERE id=" + id + ";";
+    console.log('query', query);
+    db.connection.query(query);
+    // await user.save();
+    console.log("PRA", params); 
     return omitHash(user.get());
 }
 
