@@ -1,0 +1,295 @@
+{
+	"info": {
+		"_postman_id": "11cefa95-682a-4f5e-869d-2622e2d5faf4",
+		"name": "the-simple-error",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcnJ5QHRlY2h2aWZ5LmNvbSIsInN1YiI6ImNhNmYxYjA2LTg1OTUtNGY2Ny1iZmEzLTg4ZGViODIwZGFlZSIsImlhdCI6MTYyNjc0NzQ3MCwiZXhwIjoxNjI3MzUyMjcwfQ.B6cM9ne0NLMrrwvbbBG_RJ7EsWXL-j2uLOFEVFSXixW2wPLuWI7LPh4yEC-1lrTzOysIJgL7IXGucSpUMjsEWw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Long\",\r\n    \"lastName\": \"Tran\",\r\n    \"username\": \"lolo\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"HaBa\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/authenticate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"HaBa\",\r\n    \"password\": \"123456\",\r\n    \"firstName\": \"Ha\",\r\n    \"lastName\": \"Nguyen\",\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register HaBa",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcnJ5QHRlY2h2aWZ5LmNvbSIsInN1YiI6ImNhNmYxYjA2LTg1OTUtNGY2Ny1iZmEzLTg4ZGViODIwZGFlZSIsImlhdCI6MTYyNjc0NzQ3MCwiZXhwIjoxNjI3MzUyMjcwfQ.B6cM9ne0NLMrrwvbbBG_RJ7EsWXL-j2uLOFEVFSXixW2wPLuWI7LPh4yEC-1lrTzOysIJgL7IXGucSpUMjsEWw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Ha\",\r\n    \"lastName\": \"Nguyen\",\r\n    \"username\": \"HaBa\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register lolo",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhhcnJ5QHRlY2h2aWZ5LmNvbSIsInN1YiI6ImNhNmYxYjA2LTg1OTUtNGY2Ny1iZmEzLTg4ZGViODIwZGFlZSIsImlhdCI6MTYyNjc0NzQ3MCwiZXhwIjoxNjI3MzUyMjcwfQ.B6cM9ne0NLMrrwvbbBG_RJ7EsWXL-j2uLOFEVFSXixW2wPLuWI7LPh4yEC-1lrTzOysIJgL7IXGucSpUMjsEWw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Long\",\r\n    \"lastName\": \"Tran\",\r\n    \"username\": \"lolo\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user SQL injection",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"HaBa\",\r\n    \"password\": \"123456\",\r\n    \"firstName\": \"Ha'-- \",\r\n    \"lastName\": \"Nguyen\",\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:4000/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user XSS",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"Lolo\",\r\n    \"password\": \"123456\",\r\n    \"firstName\": \"<script id=run>alert(`XSS injection`);</script>\",\r\n    \"lastName\": \"Tran\",\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/users/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"users",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

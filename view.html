@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The simple error</title>
+  </head>
+  <body>
+    <h1>This is a demo for stored XSS</h1>
+    <div id="info"></div>
+
+    <script>
+      fetch("http://localhost:4000/users/")
+        .then((response) => response.json())
+        .then((data) => {
+          const listUserHTML = data.map(
+            (user) =>
+              `<h3>${user.username}</h3>
+              <p>id : ${user.id}</p>
+              <p>First name : ${user.firstName}</p>
+              <p>Last name : ${user.lastName}</p>
+              <p>role : ${user.role}</p><br/>`
+          );
+
+          const html = listUserHTML.reduce(
+            (html, user) => `${html} ${user}`,
+            ""
+          );
+          document.getElementById("info").innerHTML = html;
+          var script = document.getElementById("run");
+          console.log(script);
+          eval(script.innerText);
+        });
+    </script>
+  </body>
+</html>
